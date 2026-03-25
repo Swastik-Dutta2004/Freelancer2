@@ -1,6 +1,9 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { account } from "./appwrite/appwrite";
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export async function getLoggedInUser() {
+  try {
+    return await account.get();
+  } catch {
+    return null;
+  }
 }
